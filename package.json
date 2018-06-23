@@ -1,0 +1,33 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./electron-src/main.js",
+  "devDependencies": {
+    "babel-plugin-root-import": "^5.1.0",
+    "copy-dir": "^0.3.0",
+    "delete-directory-recursive": "^1.0.0",
+    "electron": "^2.0.0",
+    "electron-packager": "^12.1.0",
+    "electron-react-devtools": "^0.4.0",
+    "electron-winstaller": "^2.6.4",
+    "npm": "^6.1.0",
+    "prompt-sync": "^4.1.6",
+    "tree-kill": "^1.2.0"
+  },
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "1.0.10"
+  },
+  "scripts": {
+    "react-eject": "react-scripts eject",
+    "react-dev-server": "react-scripts start",
+    "react-build": "react-scripts build && mv build react-build -f",
+    "electron-dev": "electron . --dev --inspect=9877 --remote-debugging-port=9876",
+    "electron-prod": "electron . --remote-debugging-port=9876 --inspect 9877",
+    "electron-build": "electron-packager ./electron-build",
+    "dev": "node tools/launchDev.js",
+    "postinstall": "node ./tools/postinstall.js"
+  }
+}

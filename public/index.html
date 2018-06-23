@@ -1,0 +1,18 @@
+<!-- 
+  This is the blank page that react applies itself to
+  You probably don't need to edit this file.
+  If you want to include a library, consider using npm and `require ******` in index.js
+-->
+
+<head>
+  <script>
+    //on windows machines with windows precision drivers,
+    //two finger scroling within chrome is 'laggy' until the window is maximized.
+    //To get around this, the next line maximizes the active window
+    window.require("electron").remote.getCurrentWindow().maximize();
+  </script>
+</head>
+
+<body>
+  <div class="viewport"></div>
+</body>

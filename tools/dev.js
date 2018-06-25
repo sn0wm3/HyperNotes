@@ -15,17 +15,17 @@ waitForReact()
 //below this line is just function declarations
 function StartElectron() {
   if(electronProcess) return;
-  log('launchDev','starting electron');
+  log('dev','starting electron');
 
-  electronProcess = exec('npm run electron-dev');
+  electronProcess = exec('npm run dev:electron');
   bindStdOut(electronProcess,"Electron")
 }
 
 function StartReact(params) {
   if(reactServerProcess) return;
-  log('launchDev','starting react');
+  log('dev','starting react');
 
-  reactServerProcess = exec("npm run react-dev-server")
+  reactServerProcess = exec("npm run dev:reactserver")
   bindStdOut(reactServerProcess,"React")
 }
 
@@ -38,10 +38,10 @@ async function waitForReact(){
     let status = await connection;
 
     if(status == "failure"){
-      log("launchDev","Didn't connect to React Dev Server  --- Trying again in 1s")
+      log("dev","Didn't connect to React Dev Server  --- Trying again in 1s")
       await wait(1000);
     } else {
-      log("launchDev","Connected to React Dev Server");
+      log("dev","Connected to React Dev Server");
       return;
     }
   };
@@ -73,10 +73,10 @@ function bindStdOut(proc,procName){
     if(code && code !== null){
       exitcode = code.toString();
     } else {
-      exitcode = "[Unknown]"
+      exitcode = "unknown"
     }
 
-    log('launchDev',procName+' exited with code '+exitcode);
+    log('dev',procName+' exited with code '+exitcode);
     stop();
   });
 }
@@ -96,12 +96,12 @@ function stop(){
   if(exiting) return;
   exiting = true;
 
-  log("launchDev","Killing other processes")
+  log("dev","Killing other processes")
 
   reactServerProcess.killed || treeKill(reactServerProcess.pid); //abort is more forcefull
   electronProcess.killed    || treeKill(electronProcess.pid);
 
-  log("launchDev","All proccesses terminated, closing launchdev")
+  log("dev","All proccesses terminated, closing dev-preview")
   setTimeout(() => {
     process.exit(0)
   }, 3000);

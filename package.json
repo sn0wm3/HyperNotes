@@ -23,15 +23,17 @@
     "react-scripts": "1.0.10"
   },
   "scripts": {
-    "dist-build": "node tools/dist-build.js",
-    "dist-run": "electron ./dist",
-    "dist-generate-binaries":"node tools/generate-binaries",
-    "npmsubinstall": "npm --prefix ./dist install ./dist",
-    "react-eject": "react-scripts eject",
-    "react-dev-server": "react-scripts start",
-    "react-build": "react-scripts build",
-    "electron-dev": "electron . --dev --inspect=9877 --remote-debugging-port=9876",
-    "dev": "node tools/launchDev.js",
+    
+    "build": "node tools/build.js",
+    "build:preview": "electron ./build",
+    "build:binaries":"node tools/generate-binaries",
+    "build:npminstall": "npm --prefix ./build install ./build",
+    "build:react": "react-scripts build",
+    
+    "dev": "node tools/dev.js",
+    "dev:reactserver": "react-scripts start",
+    "dev:electron": "electron . --dev --inspect=9877 --remote-debugging-port=9876",
+    
     "postinstall": "node ./tools/postinstall.js"
   },
   "homepage": "../react-build"

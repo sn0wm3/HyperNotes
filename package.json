@@ -23,17 +23,14 @@
     "react-scripts": "1.0.10"
   },
   "scripts": {
-    
     "build": "node tools/build.js",
     "build:preview": "electron ./build",
-    "build:binaries":"node tools/generate-binaries",
+    "build:binaries": "node tools/generate-binaries",
     "build:npminstall": "npm --prefix ./build install ./build",
     "build:react": "react-scripts build",
-    
     "dev": "node tools/dev.js",
     "dev:reactserver": "react-scripts start",
     "dev:electron": "electron . --dev --inspect=9877 --remote-debugging-port=9876",
-    
     "postinstall": "node ./tools/postinstall.js"
   },
   "homepage": "../react-build"

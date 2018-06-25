@@ -31,8 +31,10 @@ runAll(['build:react'],options)
 
     await Promise.all([
       fs.copy("./electron-src", "./build/electron-src"), //we don't make a new dir so this line doesn't complain abt overwriting
-      fs.copy("./react-build", "./build/react-build"),
+      fs.move("./react-build", "./build/react-build"),
     ])
+
+
 
     let nodemods = await fs.readJSONSync('./package.json');
     delete nodemods.devDependencies;

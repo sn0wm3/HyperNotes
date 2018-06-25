@@ -11,7 +11,9 @@
     "electron-packager": "^12.1.0",
     "electron-react-devtools": "^0.4.0",
     "electron-winstaller": "^2.6.4",
+    "fs-extra": "^6.0.1",
     "npm": "^6.1.0",
+    "npm-run-all": "^4.1.3",
     "prompt-sync": "^4.1.6",
     "tree-kill": "^1.2.0"
   },
@@ -21,13 +23,16 @@
     "react-scripts": "1.0.10"
   },
   "scripts": {
+    "dist-build": "node tools/dist-build.js",
+    "dist-run": "electron ./dist",
+    "dist-generate-binaries":"node tools/generate-binaries",
+    "npmsubinstall": "npm --prefix ./dist install ./dist",
     "react-eject": "react-scripts eject",
     "react-dev-server": "react-scripts start",
-    "react-build": "react-scripts build && mv build react-build -f",
+    "react-build": "react-scripts build",
     "electron-dev": "electron . --dev --inspect=9877 --remote-debugging-port=9876",
-    "electron-prod": "electron . --remote-debugging-port=9876 --inspect 9877",
-    "electron-build": "electron-packager ./electron-build",
     "dev": "node tools/launchDev.js",
     "postinstall": "node ./tools/postinstall.js"
-  }
+  },
+  "homepage": "../react-build"
 }

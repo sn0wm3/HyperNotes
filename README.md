@@ -1,12 +1,12 @@
-#Beau's React+Electron Template App
-###Quickstart:
+# Beau's React+Electron Template App
+### Quickstart:
 Open your favorite console in the root folder and type
 ```
 npm run dev
 ```
 then open up react-src/index.js
 
-###Commands:
+### Commands:
 "build-build"
 "build-run"
 "build-generate-binaries"

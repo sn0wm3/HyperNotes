@@ -21,7 +21,7 @@ function StartElectron() {
   bindStdOut(electronProcess,"Electron")
 }
 
-function StartReact(params) {
+function StartReact() {
   if(reactServerProcess) return;
   log('dev','starting react');
 
@@ -32,8 +32,8 @@ function StartReact(params) {
 async function waitForReact(){
   for (var i = 0; i < 10; i++){
     let connection = new Promise(connectToReact)
-      .then(()=> "success")
-      .catch(()=> "failure")
+      .then(() => "success")
+      .catch(() => "failure")
 
     let status = await connection;
 
@@ -92,8 +92,8 @@ function log(process,message){
   console.log(procName.padEnd(20) + "|"+lines.join("\n"+"".padStart(20)+"|"))
 }
 
-function stop(){
-  if(exiting) return;
+function stop() {
+  if (exiting) return;
   exiting = true;
 
   log("dev","Killing other processes")

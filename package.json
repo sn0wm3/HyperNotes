@@ -7,7 +7,7 @@
     "babel-plugin-root-import": "^5.1.0",
     "copy-dir": "^0.3.0",
     "delete-directory-recursive": "^1.0.0",
-    "electron": "^2.0.0",
+    "electron": "^2.0.3",
     "electron-packager": "^12.1.0",
     "electron-react-devtools": "^0.4.0",
     "electron-winstaller": "^2.6.4",
@@ -18,14 +18,14 @@
     "tree-kill": "^1.2.0"
   },
   "dependencies": {
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-scripts": "1.0.10"
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts": "^1.1.4"
   },
   "scripts": {
     "build": "node tools/build.js",
-    "build:preview": "electron ./build",
-    "build:binaries": "node tools/generate-binaries",
+    "preview": "electron ./build",
+    "dists": "node tools/generate-binaries",
     "build:npminstall": "npm --prefix ./build install ./build",
     "build:react": "react-scripts build",
     "dev": "node tools/dev.js",

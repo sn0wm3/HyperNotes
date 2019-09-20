@@ -3,6 +3,7 @@ const reactWebserverPort = 3000;
 const exec = require('child_process').exec;
 const client = new net.Socket();
 const treeKill = require('tree-kill');
+var colors = require('colors');
 
 let electronProcess    = null;
 let reactServerProcess = null;
@@ -18,7 +19,7 @@ function StartElectron() {
   log('dev','starting electron');
 
   electronProcess = exec('npm run dev:electron');
-  bindStdOut(electronProcess,"Electron")
+  bindStdOut(electronProcess,"Electron","cyan")
 }
 
 function StartReact() {
@@ -26,7 +27,7 @@ function StartReact() {
   log('dev','starting react');
 
   reactServerProcess = exec("npm run dev:reactserver")
-  bindStdOut(reactServerProcess,"React")
+  bindStdOut(reactServerProcess,"React","blue")
 }
 
 async function waitForReact(){
@@ -61,9 +62,9 @@ function wait(ms) {
   });
 }
 
-function bindStdOut(proc,procName){
+function bindStdOut(proc,procName,color){
   proc.stdout.on('data', function (data) {
-    log(procName,data)
+    log(procName,data,colors[color]);
   });
 
   proc.on('exit', function (code) {
@@ -73,7 +74,7 @@ function bindStdOut(proc,procName){
     if(code && code !== null){
       exitcode = code.toString();
     } else {
-      exitcode = "unknown"
+      exitcode = "???"
     }
 
     log('dev',procName+' exited with code '+exitcode);
@@ -81,15 +82,16 @@ function bindStdOut(proc,procName){
   });
 }
 
-function log(process,message){
+function log(process, message, postProcessingFCN=((x)=>x)){
   let procName = process + " "
   while (procName.length < 20) {
     procName += " "
   }
 
   let lines = message.toString().split('\n')
+  let out = procName.padEnd(20) + "|" + lines.join("\n" + "".padStart(20) + "|")
 
-  console.log(procName.padEnd(20) + "|"+lines.join("\n"+"".padStart(20)+"|"))
+  console.log(postProcessingFCN(out))
 }
 
 function stop() {

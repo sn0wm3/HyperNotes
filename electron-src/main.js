@@ -25,9 +25,7 @@ function OpenNewWindow () {
     startUrl = `file://${__dirname}/../react-build/index.html`;
   }
   
-  console.log(startUrl);
   win.loadURL(startUrl);
-  console.log("Doop");
     
   win.__id = Symbol("BrowserWindow");
   windows[win.__id] = win //this keeps the window autodeleted.
@@ -39,7 +37,6 @@ function OpenNewWindow () {
   // BrowserWindow.addDevToolsExtension( //REACT DEVTOOLS
   //   '/path/to/Google/Chrome/User Data/Default/Extensions/the id of reactdevtools/reactdevtoolsversion'
   // );
-  console.log("HI")
 }
 
 app.on('ready', OpenNewWindow)

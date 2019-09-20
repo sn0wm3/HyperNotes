@@ -1,4 +1,4 @@
-# Beau's React+Electron Template App
+# Anabelle's React+Electron Template App
 ### Quickstart:
 Open your favorite console in the root folder and type
 ```
